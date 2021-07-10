@@ -1,1 +1,18 @@
 https://www.youtube.com/watch?v=HKJDLXsTr8A
+Create
+/blog/create
+
+Read
+/blog // index method
+
+update put or patch request
+/blog/{id or slug} // put method
+
+delete DELETE method
+/blog/{delete}
+
+Show data - GET 
+/blog/{id}
+
+Edit - Get
+blog/{id}/edit
