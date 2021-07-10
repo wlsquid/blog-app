@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -25,7 +26,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+      if (Auth::check()) {
+      return view('blog.create');
+    } 
     }
 
     /**
@@ -36,7 +39,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        $newImageName = uniqid() . "-" . $request->title . "." . $request->image->extension();
+
+        dd($newImageName);
     }
 
     /**
