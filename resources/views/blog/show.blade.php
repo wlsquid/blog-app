@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="w-4/5 m-auto">
+  <div class="py-15 border-b flex justify-center">
+       <img src="{{ asset('images/' . $post->image_path ) }}" >
+  </div>
+
+</div>
     <div class="w-4/5 m-auto text-left">
       <div class="py-15 border-b">
            <h1 class="text-6xl">

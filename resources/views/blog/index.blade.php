@@ -10,7 +10,7 @@
 
     </div>
     @if (session()->has('message'))
-       <div class="w-4/5 m-auto mt-10 text-gray-100 pl-2">
+       <div class="w-4/5 m-auto mt-10 text-gray-100 text-center pl-2">
           <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
               {{ session()->get('message') }}
         </p> 
@@ -27,7 +27,7 @@
     @foreach ($posts as $post)
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
         <div>
-           <img src="{{ $post -> image_path }}" alt="">
+           <img src="{{ asset('images/' . $post->image_path) }}" alt="">
         </div>
         <div>
            <h2 class="text-gray-700 font-bold text-5xl pb-4">
@@ -45,6 +45,13 @@
            @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
            <span class="float-right">
            <a href="/blog/{{ $post->slug }}/edit" class="text-gray-700 hover:text-gray-900 uppercase border-b-2 italic pt-8 pb-1">Edit Post</a>
+        </span>
+        <span class="float-right">
+           <form action="/blog/{{ $post->slug }}" method="POST">
+           @csrf
+           @method('delete')
+           <button class="text-red-500 pr-3" type="submit" onsubmit="return confirm('Do you really want to delete your post?');">Delete</button>
+        </form>
         </span>
            @endif
         </div>
