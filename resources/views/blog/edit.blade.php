@@ -21,7 +21,7 @@
         </div>
     @endif
    <div class="w-4/5 m-auto pt-20">
-      <form action="/blog/{{ $post->slug }}" method="POST" enctype="multipart/form-data">
+      <form action="/blog/{{ $post->slug }}" method="POST" enctype="multipart/form-data"  onsubmit="return confirm('Do are you sure you want to update your post?');">
            @csrf
            @method('PUT')
            <input type="text" name="title" value="{{ $post->title }}" class="bg-gray-0 block border-b-2 w-full h-20 text-6xl outline-none">

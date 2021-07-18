@@ -47,10 +47,10 @@
            <a href="/blog/{{ $post->slug }}/edit" class="text-gray-700 hover:text-gray-900 uppercase border-b-2 italic pt-8 pb-1">Edit Post</a>
         </span>
         <span class="float-right">
-           <form action="/blog/{{ $post->slug }}" method="POST">
+           <form action="/blog/{{ $post->slug }}" method="POST" onsubmit="return confirm('Do you really want to delete your post?');">
            @csrf
            @method('delete')
-           <button class="text-red-500 pr-3" type="submit" onsubmit="return confirm('Do you really want to delete your post?');">Delete</button>
+           <button class="text-red-500 pr-3" type="submit">Delete</button>
         </form>
         </span>
            @endif
